@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darling in the Franxx Fan Site</title>
+<meta name="description" content="Фан-сайт по аниме Darling in the Franxx с картинкой Zero Two и видеоклипом.">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1a002a, #ff2e63);
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+h1 {
+    font-size: 3em;
+    animation: glow 2s infinite alternate;
+    color: #ff4f7a;
+    text-shadow: 0 0 20px #ff2e63;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff2e63; }
+    to { text-shadow: 0 0 25px #ff2e63, 0 0 40px #ff2e63; }
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 46, 99, 0.6);
+}
+
+button {
+    background: #ff2e63;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #ff4f7a;
+    transform: scale(1.1);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.9;
+}
+
+.telegram-btn {
+    font-size: 50px;
+    color: #0088cc;
+    transition: color 0.3s;
+}
+.telegram-btn:hover {
+    color: #00aaff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Darling in the Franxx Fan Site</h1>
+    <p>Фан-сайт с картинкой Zero Two и видеоклипом в стиле аниме Darling in the Franxx</p>
+    <button onclick="alert('Welcome, pilot ❤️')">Start</button>
+</header>
+
+<div class="container">
+
+    <div class="card fade-in">
+        <h2>About</h2>
+        <p>Это фан-сайт по аниме Darling in the Franxx. Погрузитесь в атмосферу будущего и почувствуйте энергетику пилотов.</p>
+    </div>
+
+    <div class="card fade-in">
+        <h2>Моя любимая Zero Two</h2>
+        <img src="zero-two.jpg" alt="Zero Two" style="width:100%; border-radius:15px;">
+
+        <!-- Контейнер видео с кнопкой звука -->
+        <div style="position: relative; margin-top: 15px;">
+            <video id="myVideo" width="100%" autoplay loop playsinline muted style="border-radius:15px;">
+                <source src="video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+
+            <button id="soundBtn" style="
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 10px 15px;
+                border-radius: 10px;
+                border: none;
+                background: #ff2e63;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+            ">🔇</button>
+        </div>
+    </div>
+
+    <div class="card fade-in">
+        <h2>Story</h2>
+        <p>В далеком будущем человечество борется за выживание, и пилоты стручковых роботов сражаются за будущее планеты.</p>
+    </div>
+
+    <div class="card fade-in">
+        <h2>Join</h2>
+        <p>Присоединяйтесь к нашей команде фанатов и исследуйте мир Franxx!</p>
+        <button onclick="alert('Вы присоединились к команде 🚀')">Join Now</button>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Darling in the Franxx Fan Site</p>
+    <a href="https://t.me/+YSHb4pYI__I5NDMy" target="_blank" class="telegram-btn"><i class="fab fa-telegram"></i></a>
+</footer>
+
+<script>
+// Анимация появления карточек при скролле
+const elements = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+    elements.forEach(el => {
+        const position = el.getBoundingClientRect().top;
+        const screen = window.innerHeight;
+        if(position < screen - 100) el.classList.add('visible');
+    });
+});
+
+// Кнопка звука для видео
+const video = document.getElementById('myVideo');
+const soundBtn = document.getElementById('soundBtn');
+video.muted = true; // по умолчанию muted, чтобы autoplay работал
+soundBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    soundBtn.textContent = video.muted ? '🔇' : '🔊';
+});
+</script>
+
+</body>
+</html>
